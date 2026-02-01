@@ -40,7 +40,9 @@ PARTE 2 – COMPILAÇÃO DO CÓDIGO
 
 2.1 Compile o código SEM flags de profiling:
 
-gcc -O0 matmul.c -o matmul
+gcc -O0 -g matmul.c -o matmul
+
+- -g: Inclua informações de depuração (debug symbols) no binário.
 
 Explicação:
 - Valgrind/Cachegrind não dependem de instrumentação do compilador
@@ -59,7 +61,7 @@ PARTE 3 – EXECUÇÃO COM CACHEGRIND
 
 3.1 Execute o programa sob o Cachegrind:
 
-valgrind --tool=cachegrind ./matmul 512 > matmul_terminal.txt 2>&1
+valgrind --tool=cachegrind ./matmul 2048 > matmul_terminal.txt 2>&1
 
 IMPORTANTE:
 - A execução será MUITO mais lenta que a execução normal

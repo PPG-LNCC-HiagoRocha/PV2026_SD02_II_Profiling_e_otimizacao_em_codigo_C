@@ -38,6 +38,9 @@ Explicação das opções:
 - -ftest-coverage  : gera dados de cobertura
 - -o matmul        : nome do executável
 
+É gerado o :
+- a-matmul.gcno: estrutura do código (o mapa estático do código)
+
 PERGUNTA 1:
 -----------
 Por que utilizamos a opção -O0 ao invés de -O3?
@@ -52,6 +55,9 @@ PARTE 3 – EXECUÇÃO DO PROGRAMA
 ./matmul 128
 
 Observe atentamente a saída do programa.
+
+É gerado o 
+- a-matmul.gcda: dados de execução (o que realmente aconteceu quando o código rodou)
 
 PERGUNTA 2:
 -----------
