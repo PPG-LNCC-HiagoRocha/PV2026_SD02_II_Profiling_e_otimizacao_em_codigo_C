@@ -20,7 +20,7 @@ vi matmul.c.gcov
 #include <stdlib.h>
 #include <time.h>
 
-#define NUM_EXECUCOES 2
+#define NUM_EXECUCOES 1
 
 double tempo_em_segundos(struct timespec inicio, struct timespec fim) {
     return (fim.tv_sec - inicio.tv_sec) +

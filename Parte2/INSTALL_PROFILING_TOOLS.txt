@@ -1,0 +1,201 @@
+============================================================
+INSTALAÇÃO DE FERRAMENTAS DE PROFILING
+gcov, gprof, valgrind (cachegrind) e Linux perf
+============================================================
+
+Este guia descreve como instalar e testar as ferramentas de
+profiling usadas no curso, tanto em Linux nativo quanto em
+Windows via WSL (Windows Subsystem for Linux).
+
+------------------------------------------------------------
+1. OBSERVAÇÕES IMPORTANTES
+------------------------------------------------------------
+
+- gcov e gprof NÃO são instalados separadamente.
+  Eles fazem parte do GCC.
+
+- valgrind (incluindo cachegrind) é um pacote separado.
+
+- Linux perf depende do kernel Linux instalado.
+
+- No WSL, o perf possui limitações (sem PMUs reais).
+
+------------------------------------------------------------
+2. INSTALAÇÃO EM LINUX (Ubuntu / Debian)
+------------------------------------------------------------
+
+2.1 Atualizar o sistema
+
+Execute no terminal:
+
+sudo apt update
+sudo apt upgrade -y
+
+------------------------------------------------------------
+2.2 Instalar GCC (inclui gcov e gprof)
+
+sudo apt install -y build-essential
+
+Esse pacote instala:
+- gcc
+- g++
+- make
+- gcov
+- gprof
+
+Verificação:
+
+gcc --version
+gcov --version
+gprof --version
+
+------------------------------------------------------------
+2.3 Instalar Valgrind (Cachegrind incluso)
+
+sudo apt install -y valgrind
+
+Verificação:
+
+valgrind --version
+
+Uso básico do cachegrind:
+
+valgrind --tool=cachegrind ./meu_programa
+cg_annotate cachegrind.out.*
+
+------------------------------------------------------------
+2.4 Instalar Linux perf
+
+Instalação recomendada:
+
+sudo apt install -y linux-tools-common linux-tools-generic
+
+Caso seja necessário instalar para um kernel específico:
+
+uname -r
+sudo apt install -y linux-tools-$(uname -r)
+
+Verificação:
+
+perf --version
+
+------------------------------------------------------------
+3. INSTALAÇÃO NO WINDOWS VIA WSL
+------------------------------------------------------------
+
+O WSL é recomendado para alunos que não possuem Linux nativo.
+
+Funciona bem para:
+- gcc
+- gcov
+- gprof
+- valgrind
+
+O perf funciona com limitações no WSL.
+
+------------------------------------------------------------
+3.1 Requisitos
+
+- Windows 10 (versão 2004 ou superior) ou Windows 11
+- Permissão de administrador
+
+------------------------------------------------------------
+3.2 Instalar o WSL
+
+Abra o PowerShell COMO ADMINISTRADOR e execute:
+
+wsl --install
+
+Esse comando instala:
+- WSL 2
+- Ubuntu (distribuição padrão)
+
+Reinicie o computador quando solicitado.
+
+------------------------------------------------------------
+3.3 Abrir o Ubuntu (WSL)
+
+Após reiniciar:
+- Abra o menu iniciar
+- Procure por "Ubuntu"
+- Defina um usuário e senha Linux
+
+------------------------------------------------------------
+3.4 Atualizar o Ubuntu no WSL
+
+sudo apt update
+sudo apt upgrade -y
+
+------------------------------------------------------------
+3.5 Instalar as ferramentas no WSL
+
+GCC (gcov + gprof):
+
+sudo apt install -y build-essential
+
+Valgrind / Cachegrind:
+
+sudo apt install -y valgrind
+
+Linux perf (limitado):
+
+sudo apt install -y linux-tools-common
+
+------------------------------------------------------------
+3.6 Limitações do perf no WSL
+
+- Não há acesso a PMUs reais de hardware
+- Eventos como cache-misses reais podem não funcionar
+- perf stat e perf record funcionam apenas parcialmente
+
+Para análises completas de desempenho, recomenda-se:
+- Linux nativo
+- Máquina remota / cluster
+
+------------------------------------------------------------
+4. CHECKLIST DE VERIFICAÇÃO (PARA OS ALUNOS)
+------------------------------------------------------------
+
+Execute os comandos abaixo:
+
+gcc --version
+gcov --version
+gprof --version
+valgrind --version
+perf --version
+
+Se todos responderem corretamente, o ambiente está pronto.
+
+------------------------------------------------------------
+5. EXEMPLOS MÍNIMOS DE USO
+------------------------------------------------------------
+
+5.1 gcov (cobertura de código)
+
+gcc -fprofile-arcs -ftest-coverage prog.c
+./a.out
+gcov prog.c
+
+------------------------------------------------------------
+5.2 gprof (tempo por função)
+
+gcc -pg prog.c -o prog
+./prog
+gprof prog gmon.out
+
+------------------------------------------------------------
+5.3 valgrind / cachegrind (simulação de cache)
+
+valgrind --tool=cachegrind ./prog
+cg_annotate cachegrind.out.*
+
+------------------------------------------------------------
+5.4 perf (Linux nativo)
+
+perf stat ./prog
+perf record ./prog
+perf report
+
+------------------------------------------------------------
+FIM DO ARQUIVO
+------------------------------------------------------------

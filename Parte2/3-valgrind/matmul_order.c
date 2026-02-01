@@ -15,7 +15,7 @@ valgrind --leak-check=full --track-origins=yes ./matmul 128
 #include <stdlib.h>
 #include <time.h>
 
-#define NUM_EXECUCOES 2
+#define NUM_EXECUCOES 1
 
 /* -------------------------------------------------
  * Função auxiliar de tempo
