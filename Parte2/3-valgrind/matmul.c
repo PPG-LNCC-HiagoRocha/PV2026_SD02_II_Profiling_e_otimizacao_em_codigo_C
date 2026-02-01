@@ -8,7 +8,8 @@ gcc -O0 -g matmul.c -o matmul
 
 EXECUÇÃO COM VALGRIND:
 ---------------------
-valgrind --leak-check=full --track-origins=yes ./matmul 128
+valgrind --tool=cachegrind --cache-sim=yes ./matmul 512
+
 */
 
 #include <stdio.h>
