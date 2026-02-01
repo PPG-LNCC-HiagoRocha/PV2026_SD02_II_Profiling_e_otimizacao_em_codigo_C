@@ -1,0 +1,16 @@
+======================================
+Job SLURM iniciado
+Nome do job     : matmul_c
+Job ID          : 11444252
+Nó(s) alocado(s): sdumont6165
+Host            : sdumont6165
+Data início     : sex jan 16 11:38:03 -03 2026
+======================================
+Compilando matmul.c
+Executando: ./matmul
+Execução 1: 169.412619 s (descartada – warm-up)
+Execução 2: 169.295012 s
+======================================
+Job finalizado
+Data fim        : sex jan 16 11:43:43 -03 2026
+======================================

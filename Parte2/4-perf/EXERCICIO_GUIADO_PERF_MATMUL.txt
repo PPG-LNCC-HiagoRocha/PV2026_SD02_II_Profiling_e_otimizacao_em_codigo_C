@@ -1,0 +1,173 @@
+============================================================
+EXERCÍCIO GUIADO – PROFILING COM PERF
+Estudo de Caso: Multiplicação de Matrizes Quadradas (N x N)
+============================================================
+
+OBJETIVO DO EXERCÍCIO
+--------------------
+Este exercício tem como objetivo introduzir o PROFILING BASEADO
+EM CONTADORES DE HARDWARE utilizando a ferramenta perf, permitindo
+ao aluno:
+
+- Medir métricas reais do processador
+- Analisar desempenho em nível de hardware
+- Observar comportamento de múltiplas threads
+- Identificar gargalos de CPU, cache e memória
+- Entender por que ferramentas anteriores não são suficientes
+  para análise paralela
+
+
+------------------------------------------------------------
+MOTIVAÇÃO
+------------------------------------------------------------
+
+Até este ponto, foram utilizadas as ferramentas:
+
+- gcov        → frequência de execução
+- gprof       → tempo por função
+- valgrind (cachegrind) → simulação de cache
+
+LIMITAÇÃO COMUM:
+Essas ferramentas NÃO utilizam contadores reais de hardware
+e NÃO conseguem distinguir métricas entre diferentes threads
+em execução paralela.
+
+Para entender:
+- escalabilidade
+- balanceamento entre threads
+- gargalos reais de cache e memória
+- impacto do paralelismo
+
+é necessário utilizar uma ferramenta baseada em hardware real.
+
+Essa ferramenta é o perf.
+
+
+------------------------------------------------------------
+PARTE 1 – PREPARAÇÃO
+------------------------------------------------------------
+
+1.1 Código base
+
+Utilize o arquivo fornecido pelo professor:
+- matmul.c
+
+OBSERVAÇÃO IMPORTANTE:
+Diferentemente das análises anteriores, este exercício utiliza
+uma versão PARALELA do código (OpenMP).
+
+O objetivo agora NÃO é analisar o algoritmo em si,
+mas observar COMO as threads se comportam no hardware.
+
+
+------------------------------------------------------------
+PARTE 2 – COMPILAÇÃO DO CÓDIGO
+------------------------------------------------------------
+
+2.1 Compile o código com suporte a paralelismo (exemplo com OpenMP):
+
+gcc -O3 -fopenmp matmul.c -o matmul
+
+Explicação:
+- perf NÃO requer instrumentação especial
+- Utilizamos -O3 para observar comportamento real
+- O código deve refletir o uso real da máquina
+
+PERGUNTA 1:
+-----------
+Por que, ao contrário das ferramentas anteriores,
+utilizamos otimizações do compilador nesta etapa?
+
+
+------------------------------------------------------------
+PARTE 3 – EXECUÇÃO BÁSICA COM PERF STAT
+------------------------------------------------------------
+
+3.1 Execute o programa normalmente com perf stat:
+
+perf stat ./matmul 512
+
+Observe as métricas apresentadas.
+
+OBSERVAÇÃO:
+O uso do perf pode exigir privilégios administrativos.
+Em alguns sistemas, pode ser necessário executar:
+
+  sudo sysctl -w kernel.perf_event_paranoid=1
+
+
+------------------------------------------------------------
+PARTE 4 – MÉTRICAS OBSERVADAS
+------------------------------------------------------------
+
+O perf stat apresenta métricas como:
+
+- task-clock            :   tempo de CPU usado
+- context-switches      :   context-switches
+- cpu-migrations        :   migração entre CPUs
+- page-faults           :   faltas de página
+- cycles                :   ciclos de CPU
+- instructions          :   instruções executadas
+- branches              :   branches
+- branch-misses         :   erros de predição
+
+PERGUNTA 2:
+-----------
+Qual métrica indica se a CPU está sendo bem utilizada?
+O que significa um IPC baixo?
+
+
+------------------------------------------------------------
+PARTE 5 – PROFILING MULTITHREAD
+------------------------------------------------------------
+
+5.1 Execute o programa com múltiplas threads:
+
+Exemplo (OpenMP):
+export OMP_NUM_THREADS=4
+perf stat ./matmul 512
+
+Repita para diferentes números de threads:
+- 1
+- 2
+- 4
+- 8 (se disponível)
+
+PERGUNTA 3:
+-----------
+O tempo diminui proporcionalmente ao número de threads?
+O que acontece com o context-switches?
+
+
+------------------------------------------------------------
+PARTE 6 – MÉTRICAS POR THREAD COM PERF RECORD
+------------------------------------------------------------
+
+6.1 Execute o perf com detalhamento por CPU/thread:
+
+perf record -e cycles,instructions,cache-misses ./matmul 512
+
+perf script | awk '$0 ~ /cache-misses/ {print $2}' | sort | uniq -c | sort -nr
+
+Observe:
+- Distribuição entre threads
+
+
+Observação:
+- Podemos listar os eventos disponiveis com:
+
+perf list
+
+- Adicionalmente, podemos filtrar os eventos desejados com:
+
+perf list | grep <nome>
+
+- Depois de gerar o perf.data, podemos ver os dados com:
+
+perf report
+
+- Ou de forma mais sucinta:
+
+perf report --header
+
+

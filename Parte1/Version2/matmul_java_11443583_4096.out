@@ -1,0 +1,18 @@
+======================================
+Job SLURM iniciado
+Nome do job     : matmul_java
+Job ID          : 11443583
+Nó(s) alocado(s): sdumont6166
+Host            : sdumont6166
+Data início     : qui jan 15 12:18:38 -03 2026
+======================================
+Compilando: MatMul.java
+Executando: java MatMul
+Execução 1: 305,685730 s (descartada – warm-up)
+Execução 2: 145,386337 s
+
+Tempo médio: 145,386337 s
+======================================
+Job finalizado
+Data fim        : qui jan 15 12:26:10 -03 2026
+======================================

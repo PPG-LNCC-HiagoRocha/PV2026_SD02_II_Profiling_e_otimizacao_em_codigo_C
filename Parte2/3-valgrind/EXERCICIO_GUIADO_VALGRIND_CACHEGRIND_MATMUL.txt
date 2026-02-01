@@ -1,0 +1,148 @@
+============================================================
+EXERCÍCIO GUIADO – PROFILING COM VALGRIND / CACHEGRIND
+Estudo de Caso: Multiplicação de Matrizes Quadradas (N x N)
+============================================================
+
+OBJETIVO DO EXERCÍCIO
+--------------------
+Este exercício tem como objetivo introduzir o PROFILING DE BAIXO NÍVEL
+utilizando as ferramentas Valgrind e Cachegrind, permitindo ao aluno:
+
+- Analisar custo computacional em nível de instruções
+- Observar o comportamento de memória e cache
+- Identificar gargalos relacionados à hierarquia de memória
+- Relacionar padrão de acesso a dados com desempenho
+- Desenvolver raciocínio crítico sobre gargalos de CPU e memória
+
+
+------------------------------------------------------------
+PARTE 1 – PREPARAÇÃO
+------------------------------------------------------------
+
+1.1 Código base
+
+Utilize o arquivo fornecido pelo professor:
+- matmul.c
+
+OBSERVAÇÃO IMPORTANTE:
+Este exercício é uma continuação natural das análises realizadas
+com gcov e gprof.
+
+Assim como no exercício com gprof e Callgrind, o código foi
+REESTRUTURADO para que a computação principal esteja isolada
+em funções específicas (por exemplo, a função de multiplicação
+de matrizes).
+
+
+------------------------------------------------------------
+PARTE 2 – COMPILAÇÃO DO CÓDIGO
+------------------------------------------------------------
+
+2.1 Compile o código SEM flags de profiling:
+
+gcc -O0 matmul.c -o matmul
+
+Explicação:
+- Valgrind/Cachegrind não dependem de instrumentação do compilador
+- A análise é feita por simulação da execução
+- Mantemos -O0 para facilitar a correlação código ↔ relatório
+
+PERGUNTA 1:
+-----------
+Por que não utilizamos flags como -pg ou -fprofile-arcs
+ao trabalhar com Valgrind/Cachegrind?
+
+
+------------------------------------------------------------
+PARTE 3 – EXECUÇÃO COM CACHEGRIND
+------------------------------------------------------------
+
+3.1 Execute o programa sob o Cachegrind:
+
+valgrind --tool=cachegrind ./matmul 512 > matmul_terminal.txt 2>&1
+
+IMPORTANTE:
+- A execução será MUITO mais lenta que a execução normal
+- Isso é esperado, pois há simulação de cache
+- Utilize valores moderados de N
+
+Durante a execução, o Cachegrind simula:
+- Cache de instruções (I1)
+- Cache de dados (D1)
+- Cache de último nível (LL)
+
+
+------------------------------------------------------------
+PARTE 4 – ARQUIVOS GERADOS
+------------------------------------------------------------
+
+Após a execução, verifique se foi criado um arquivo no formato:
+
+- cachegrind.out.<PID>
+
+Exemplo:
+- cachegrind.out.12345
+
+Esse arquivo contém todas as estatísticas de cache simuladas.
+
+
+------------------------------------------------------------
+PARTE 5 – VISUALIZAÇÃO DO RELATÓRIO
+------------------------------------------------------------
+
+5.1 Gere o relatório em modo texto:
+
+cg_annotate cachegrind.out.<PID> > cachegrind.txt
+
+5.2 Abra o relatório:
+
+vi cachegrind.txt
+
+OBSERVAÇÃO:
+Ferramentas gráficas como kcachegrind podem ser utilizadas,
+mas neste exercício a análise será feita em modo texto.
+
+
+------------------------------------------------------------
+PARTE 6 – ENTENDENDO AS MÉTRICAS DO CACHEGRIND
+------------------------------------------------------------
+
+No relatório do Cachegrind, observe métricas como:
+
+- Ir   : instruções executadas
+- I1mr : cache misses no cache de instruções L1
+- Dr   : leituras de dados
+- D1mr : cache misses de dados no cache L1
+- Dw   : escritas de dados
+- D1mw : misses de escrita no cache L1
+- LLmr : misses no último nível de cache
+- LLmw : misses de escrita no último nível
+
+PERGUNTA 2:
+-----------
+O Cachegrind mede tempo de execução?
+O que significa um cache miss nesse contexto?
+
+
+------------------------------------------------------------
+PARTE 7 – IDENTIFICAÇÃO DO HOTSPOT DE MEMÓRIA
+------------------------------------------------------------
+
+7.1 Localize a função responsável pela multiplicação de matrizes.
+
+Observe:
+- Número de acessos à memória (Dr, Dw)
+- Número de cache misses (D1mr, LLmr)
+
+PERGUNTA 3:
+-----------
+Qual função concentra o maior número de acessos à memória?
+Esse resultado era esperado? Por quê?
+
+------------------------------------------------------------
+PARTE 8 – COMPARAÇÃO COM MELHOR ORDEM DOS LOOPS
+------------------------------------------------------------
+
+8.1 Repida os passos anteriores para o matmul_order.c e compare o resultado.
+
+- Onde estão ganhos?

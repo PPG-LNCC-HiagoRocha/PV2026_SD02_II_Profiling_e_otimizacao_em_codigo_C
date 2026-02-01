@@ -1,0 +1,10 @@
+======================================
+Job SLURM iniciado
+Nome do job     : matmul
+Job ID          : 11443566
+Nó(s) alocado(s): sdumont6166
+Host            : sdumont6166
+Data início     : qui jan 15 11:18:47 -03 2026
+======================================
+Executando: python3 matmul.py
+slurmstepd: error: *** JOB 11443566 ON sdumont6166 CANCELLED AT 2026-01-15T11:39:06 DUE TO TIME LIMIT ***

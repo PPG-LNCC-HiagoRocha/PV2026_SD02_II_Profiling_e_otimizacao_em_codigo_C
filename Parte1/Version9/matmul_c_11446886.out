@@ -1,0 +1,26 @@
+====================================
+Compilando código com Intel MKL
+====================================
+matmul_mkl.c:52:33: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+   52 |         A[i] = (float) rand() / RAND_MAX;
+      |                               ~ ^~~~~~~~
+/usr/include/stdlib.h:86:18: note: expanded from macro 'RAND_MAX'
+   86 | #define RAND_MAX        2147483647
+      |                         ^~~~~~~~~~
+matmul_mkl.c:53:33: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+   53 |         B[i] = (float) rand() / RAND_MAX;
+      |                               ~ ^~~~~~~~
+/usr/include/stdlib.h:86:18: note: expanded from macro 'RAND_MAX'
+   86 | #define RAND_MAX        2147483647
+      |                         ^~~~~~~~~~
+2 warnings generated.
+====================================
+Executando matmul_mkl
+OMP_NUM_THREADS=
+MKL_NUM_THREADS=
+====================================
+Execução 1: 2.268576 s (descartada – warm-up)
+Execução 2: 2.257449 s
+====================================
+Execução finalizada
+====================================

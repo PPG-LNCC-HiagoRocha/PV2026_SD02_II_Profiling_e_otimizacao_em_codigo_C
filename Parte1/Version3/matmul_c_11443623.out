@@ -1,0 +1,11 @@
+======================================
+Job SLURM iniciado
+Nome do job     : matmul_c
+Job ID          : 11443623
+Nó(s) alocado(s): sdumont6165
+Host            : sdumont6165
+Data início     : qui jan 15 13:31:55 -03 2026
+======================================
+Compilando matmul.c
+Executando: ./matmul
+slurmstepd: error: *** JOB 11443623 ON sdumont6165 CANCELLED AT 2026-01-15T13:52:09 DUE TO TIME LIMIT ***

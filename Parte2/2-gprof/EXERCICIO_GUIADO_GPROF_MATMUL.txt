@@ -1,0 +1,174 @@
+============================================================
+EXERCÍCIO GUIADO – INTRODUÇÃO AO PROFILING COM GPROF
+Estudo de Caso: Multiplicação de Matrizes Quadradas (N x N)
+============================================================
+
+OBJETIVO DO EXERCÍCIO
+--------------------
+Este exercício tem como objetivo introduzir o conceito de PROFILING
+TEMPORAL por meio da ferramenta gprof, permitindo ao aluno:
+
+- Medir tempo gasto por função
+- Identificar funções dominantes (hotspots temporais)
+- Relacionar frequência de execução com custo em tempo
+- Entender a diferença entre cobertura (gcov) e tempo (gprof)
+- Desenvolver raciocínio crítico para otimização de desempenho
+
+
+------------------------------------------------------------
+PARTE 1 – PREPARAÇÃO
+------------------------------------------------------------
+
+1.1 Código base
+
+Utilize o mesmo arquivo fornecido anteriormente:
+- matmul.c
+
+OBSERVAÇÃO IMPORTANTE:
+Este exercício é uma continuação natural da análise realizada
+com gcov. No entanto, para que o uso do gprof seja significativo,
+foi necessário REESTRUTURAR o código em relação à versão anterior.
+
+O código foi reorganizado para:
+- Isolar a computação principal em funções específicas
+  (por exemplo, a função de multiplicação de matrizes)
+- Separar inicialização, computação e medição de tempo
+- Tornar visível, no gprof, o custo relativo de cada função
+
+
+------------------------------------------------------------
+PARTE 2 – COMPILAÇÃO COM GPROF
+------------------------------------------------------------
+
+2.1 Compile o código com suporte ao gprof:
+
+gcc -O0 -pg matmul.c -o matmul
+
+Explicação das opções:
+- -O0 : desativa otimizações para facilitar a análise
+- -pg : insere instrumentação para coleta de tempo
+- -o  : nome do executável
+
+PERGUNTA 1:
+-----------
+Por que ainda utilizamos -O0 ao fazer profiling com gprof?
+
+
+------------------------------------------------------------
+PARTE 3 – EXECUÇÃO DO PROGRAMA
+------------------------------------------------------------
+
+3.1 Execute o programa com N = 512:
+
+./matmul 512
+
+Observe a execução normalmente.
+
+IMPORTANTE:
+Não é exibido nenhum relatório durante a execução.
+Os dados de profiling são gravados automaticamente.
+
+
+------------------------------------------------------------
+PARTE 4 – ARQUIVOS GERADOS
+------------------------------------------------------------
+
+Após a execução, verifique se o arquivo abaixo foi criado:
+
+- gmon.out
+
+Este arquivo contém os dados de tempo coletados pelo gprof.
+
+
+------------------------------------------------------------
+PARTE 5 – GERAÇÃO DO RELATÓRIO GPROF
+------------------------------------------------------------
+
+5.1 Gere o relatório de profiling:
+
+gprof matmul gmon.out > gprof.txt
+
+5.2 Abra o relatório:
+
+vi gprof.txt
+
+
+------------------------------------------------------------
+PARTE 6 – VISÃO GERAL DO RELATÓRIO
+------------------------------------------------------------
+
+O relatório do gprof é dividido em duas partes principais:
+
+1) Flat profile
+2) Call graph
+
+Neste exercício, o foco inicial será o FLAT PROFILE.
+
+
+------------------------------------------------------------
+PARTE 6 – VISÃO GERAL DO RELATÓRIO
+------------------------------------------------------------
+
+O relatório do gprof é dividido em duas partes principais:
+
+1) Flat profile
+2) Call graph
+
+Neste exercício, o foco inicial será o FLAT PROFILE.
+
+
+------------------------------------------------------------
+PARTE 7 – ANÁLISE DO FLAT PROFILE
+------------------------------------------------------------
+
+No início do arquivo, localize a tabela semelhante a:
+
+%   cumulative   self
+time   seconds   seconds   calls   name
+
+Explique cada coluna:
+
+- % time      : porcentagem do tempo total
+- self seconds: tempo gasto apenas na função
+- calls       : número de chamadas
+- name        : nome da função
+
+PERGUNTA 2:
+-----------
+Qual função apresenta o maior percentual de tempo?
+Essa função era esperada? Por quê?
+
+
+------------------------------------------------------------
+PARTE 8 – COMPARAÇÃO ENTRE FUNÇÕES
+------------------------------------------------------------
+
+Localize no relatório funções como:
+
+- main
+- tempo_em_segundos
+- funções associadas à multiplicação
+
+PERGUNTA 3:
+-----------
+Qual a diferença entre:
+- número de chamadas
+- tempo total gasto
+
+Uma função chamada poucas vezes pode ser dominante?
+Explique.
+
+------------------------------------------------------------
+PARTE 9 – CALL GRAPH (VISÃO DE CHAMADAS)
+------------------------------------------------------------
+
+Localize no relatório a seção CALL GRAPH.
+
+Essa seção mostra:
+- Quem chama quem
+- Quanto tempo é propagado entre funções
+
+PERGUNTA 4:
+-----------
+Qual função chama o kernel principal?
+Essa estrutura facilita ou dificulta otimizações futuras?

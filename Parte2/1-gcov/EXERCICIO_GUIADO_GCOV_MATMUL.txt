@@ -1,0 +1,181 @@
+============================================================
+EXERCÍCIO GUIADO – INTRODUÇÃO AO PROFILING COM GCOV
+Estudo de Caso: Multiplicação de Matrizes Quadradas (N x N)
+============================================================
+
+OBJETIVO DO EXERCÍCIO
+--------------------
+Este exercício tem como objetivo introduzir o conceito de PROFILING
+por meio da ferramenta gcov, permitindo ao aluno:
+
+- Medir onde o código executa mais
+- Identificar hotspots de execução
+- Entender por que profiling deve preceder otimizações
+- Desenvolver raciocínio crítico sobre desempenho
+
+
+------------------------------------------------------------
+PARTE 1 – PREPARAÇÃO
+------------------------------------------------------------
+
+1.1 Código base
+
+Utilize o arquivo fornecido pelo professor:
+- matmul.c
+
+
+------------------------------------------------------------
+PARTE 2 – COMPILAÇÃO COM GCOV
+------------------------------------------------------------
+
+2.1 Compile o código usando o GCC:
+
+gcc -O0 -fprofile-arcs -ftest-coverage matmul.c -o matmul
+
+Explicação das opções:
+- -O0              : desativa otimizações
+- -fprofile-arcs   : instrumenta laços e desvios
+- -ftest-coverage  : gera dados de cobertura
+- -o matmul        : nome do executável
+
+PERGUNTA 1:
+-----------
+Por que utilizamos a opção -O0 ao invés de -O3?
+
+
+------------------------------------------------------------
+PARTE 3 – EXECUÇÃO DO PROGRAMA
+------------------------------------------------------------
+
+3.1 Execute o programa com N = 512:
+
+./matmul 128
+
+Observe atentamente a saída do programa.
+
+PERGUNTA 2:
+-----------
+Qual execução foi mais lenta (primeira ou segunda)?
+Qual a possível explicação para esse comportamento?
+
+
+------------------------------------------------------------
+PARTE 4 – GERAÇÃO DO RELATÓRIO GCOV
+------------------------------------------------------------
+
+4.1 Após a execução, gere o relatório de cobertura:
+
+gcov matmul.c
+
+4.2 Verifique se o arquivo foi criado:
+
+- matmul.c.gcov
+
+
+------------------------------------------------------------
+PARTE 5 – ANÁLISE DO ARQUIVO .gcov
+------------------------------------------------------------
+
+5.1 Abra o relatório:
+
+vi matmul.c.gcov
+
+Cada linha do arquivo segue o formato:
+
+<contador>:<número da linha>:<código>
+
+
+------------------------------------------------------------
+PARTE 6 – CÓDIGO POUCO RELEVANTE
+------------------------------------------------------------
+
+6.1 Localize a linha:
+
+if (argc != 2)
+
+PERGUNTA 3:
+-----------
+Quantas vezes essa linha foi executada?
+Ela é relevante para o desempenho? Justifique.
+
+
+------------------------------------------------------------
+PARTE 7 – INICIALIZAÇÃO DAS MATRIZES
+------------------------------------------------------------
+
+7.1 Localize os laços responsáveis pela inicialização das matrizes A e B.
+
+PERGUNTA 4:
+-----------
+Quantas vezes esses laços são executados?
+Eles dominam o tempo de execução? Por quê?
+
+
+------------------------------------------------------------
+PARTE 8 – IDENTIFICAÇÃO DO HOTSPOT
+------------------------------------------------------------
+
+8.1 Localize o kernel principal:
+
+C[i][j] += A[i][k] * B[k][j];
+
+PERGUNTA 5:
+-----------
+Quantas vezes essa linha foi executada?
+Dica: utilize a relação N³.
+
+
+------------------------------------------------------------
+PARTE 9 – COMPARAÇÃO ENTRE TRECHOS DO CÓDIGO
+------------------------------------------------------------
+
+PERGUNTA 6:
+-----------
+Compare o número de execuções do kernel com:
+- leitura de argumentos
+- printf
+- alocação de memória
+
+O que essa comparação indica?
+
+
+------------------------------------------------------------
+PARTE 10 – RACIOCÍNIO DE DESEMPENHO
+------------------------------------------------------------
+
+PERGUNTA 7:
+-----------
+Se você pudesse otimizar apenas UM trecho do código,
+qual seria? Justifique com base nos dados do gcov.
+
+
+PERGUNTA 8:
+-----------
+Por que otimizar printf, malloc ou verificações de erro
+não traria ganhos significativos de desempenho?
+
+
+------------------------------------------------------------
+PARTE 11 – LIMITAÇÕES DO GCOV
+------------------------------------------------------------
+
+PERGUNTA 9:
+-----------
+O gcov mede tempo de execução?
+O que ele mede exatamente?
+
+
+------------------------------------------------------------
+PARTE 12 – MOTIVAÇÃO PARA O PRÓXIMO PASSO
+------------------------------------------------------------
+
+PERGUNTA 10:
+------------
+Que tipo de informação adicional seria necessária para
+continuar a otimização de forma científica?
+
+Exemplos:
+- Tempo por função
+- Uso de cache
+- Uso de CPU
+- Paralelismo

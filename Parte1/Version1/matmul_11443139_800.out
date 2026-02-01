@@ -1,0 +1,21 @@
+======================================
+Job SLURM iniciado
+Nome do job     : matmul
+Job ID          : 11443139
+Nó(s) alocado(s): sdumont6220
+Host            : sdumont6220
+Data início     : qua jan 14 11:51:42 -03 2026
+======================================
+Executando: python3 matmul.py
+Execução 1: 103.124344 s (descartada – warm-up)
+Execução 2: 98.248402 s
+Execução 3: 98.211012 s
+Execução 4: 98.373281 s
+Execução 5: 98.196721 s
+Execução 6: 98.507501 s
+
+Tempo médio (5 execuções): 98.307383 s
+======================================
+Job finalizado
+Data fim        : qua jan 14 12:01:37 -03 2026
+======================================
