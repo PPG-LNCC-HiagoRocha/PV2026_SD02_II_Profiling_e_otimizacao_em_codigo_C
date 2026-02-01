@@ -1,1 +1,1 @@
-# PV2026_SD02_II_Profiling_e_otimizacao_em_codigo_C
+# PV2026 - SD02-II: Profiling e otimizacao em codigo C/C++
