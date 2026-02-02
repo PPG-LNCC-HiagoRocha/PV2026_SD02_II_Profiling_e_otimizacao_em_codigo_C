@@ -61,12 +61,13 @@ PARTE 3 – EXECUÇÃO COM CACHEGRIND
 
 3.1 Execute o programa sob o Cachegrind:
 
-valgrind --tool=cachegrind --cache-sim=yes ./matmul 512 ./matmul 2048 > matmul_terminal.txt 2>&1
+valgrind --tool=cachegrind --cache-sim=yes ./matmul 512 > matmul_terminal.txt 2>&1
 
 IMPORTANTE:
 - A execução será MUITO mais lenta que a execução normal
 - Isso é esperado, pois há simulação de cache
 - Utilize valores moderados de N
+- Observação: Na fila sequena_cpu_dev do SDumont, observou-se mudança nos L1 cache misses apenas com N > 1024.
 
 Durante a execução, o Cachegrind simula:
 - Cache de instruções (I1)
