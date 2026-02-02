@@ -1,6 +1,6 @@
 # PV2026 – SD02-II: Profiling e Otimização em Código C/C++
 
-Este repositório reúne os códigos, exemplos e exercícios utilizados no curso **SD02-II: Profiling e Otimização de Código em C/C++**, ministrado durante a **Escola do Supercomputador Santos Dumont – 2026**.
+Este repositório reúne os slides, códigos, exemplos e exercícios utilizados no curso **SD02-II: Profiling e Otimização de Código em C/C++**, ministrado durante a **Escola do Supercomputador Santos Dumont – 2026**.
 
 O curso tem como foco a análise de desempenho, a identificação de gargalos e a aplicação de técnicas clássicas de otimização em arquiteturas modernas, explorando paralelismo, hierarquia de memória e vetorização.
 
