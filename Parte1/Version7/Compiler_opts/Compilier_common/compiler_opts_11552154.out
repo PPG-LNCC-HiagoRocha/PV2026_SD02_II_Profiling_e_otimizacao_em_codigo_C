@@ -1,0 +1,11 @@
+Compilando TILE=4
+Compilando TILE=8
+Compilando TILE=16
+Compilando TILE=32
+Compilando TILE=64
+Compilando TILE=128
+
+=============================================
+Relatório gerado:
+   compiler_optimization_report.txt
+=============================================

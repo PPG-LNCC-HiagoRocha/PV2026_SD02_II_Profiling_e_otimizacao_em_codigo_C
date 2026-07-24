@@ -1,0 +1,827 @@
+consider run-time aliasing test between *_41 and *_48
+consider run-time aliasing test between *_55 and *_48
+
+Analyzing loop at ../../matmul.c:76
+../../matmul.c:76:61: note: ===== analyze_loop_nest =====
+../../matmul.c:76:61: note: === vect_analyze_loop_form ===
+../../matmul.c:76:61: note: not vectorized: multiple nested loops.
+../../matmul.c:76:61: note: bad loop form.
+
+Analyzing loop at ../../matmul.c:73
+../../matmul.c:73:13: note: ===== analyze_loop_nest =====
+../../matmul.c:73:13: note: === vect_analyze_loop_form ===
+../../matmul.c:73:13: note: not vectorized: multiple nested loops.
+../../matmul.c:73:13: note: bad loop form.
+
+Analyzing loop at ../../matmul.c:74
+../../matmul.c:74:17: note: ===== analyze_loop_nest =====
+../../matmul.c:74:17: note: === vect_analyze_loop_form ===
+../../matmul.c:74:17: note: not vectorized: multiple nested loops.
+../../matmul.c:74:17: note: bad loop form.
+
+Analyzing loop at ../../matmul.c:80
+../../matmul.c:80:21: note: ===== analyze_loop_nest =====
+../../matmul.c:80:21: note: === vect_analyze_loop_form ===
+../../matmul.c:80:21: note: not vectorized: multiple nested loops.
+../../matmul.c:80:21: note: bad loop form.
+
+Analyzing loop at ../../matmul.c:81
+../../matmul.c:81:25: note: ===== analyze_loop_nest =====
+../../matmul.c:81:25: note: === vect_analyze_loop_form ===
+../../matmul.c:81:25: note: === vect_analyze_loop_form ===
+../../matmul.c:81:25: note: === get_loop_niters ===
+../../matmul.c:81:25: note: Considering outer-loop vectorization.
+../../matmul.c:81:25: note: === get_loop_niters ===
+../../matmul.c:81:25: note: Symbolic number of iterations is ((unsigned int) _30 - (unsigned int) kk_79) + 32
+../../matmul.c:81:25: note: === vect_analyze_data_refs ===
+../../matmul.c:81:25: note: got vectype for stmt: aik_42 = *_41;
+vector(8) float
+../../matmul.c:81:25: note: analyze in outer loop: *(C.8_44 + (sizetype) (((long unsigned int) _37 + (long unsigned int) jj_80) * 4))
+../../matmul.c:81:25: note: 	outer base_address: C.8_44 + (sizetype) (((long unsigned int) _37 + (long unsigned int) jj_80) * 4)
+	outer offset from base address: 0
+	outer constant offset from base address: 0
+	outer step: 0
+	outer base alignment: 4
+
+	outer base misalignment: 0
+
+	outer offset alignment: 512
+
+	outer step alignment: 512
+../../matmul.c:81:25: note: got vectype for stmt: _49 = *_48;
+vector(8) float
+../../matmul.c:81:25: note: analyze in outer loop: *(B.9_50 + (sizetype) (((long unsigned int) _51 + (long unsigned int) jj_80) * 4))
+../../matmul.c:81:25: note: 	outer base_address: B.9_50 + (sizetype) (((long unsigned int) (kk_79 * 16384) + (long unsigned int) jj_80) * 4)
+	outer offset from base address: 0
+	outer constant offset from base address: 0
+	outer step: 65536
+	outer base alignment: 4
+
+	outer base misalignment: 0
+
+	outer offset alignment: 512
+
+	outer step alignment: 512
+../../matmul.c:81:25: note: got vectype for stmt: _56 = *_55;
+vector(8) float
+../../matmul.c:81:25: note: analyze in outer loop: *(C.8_44 + (sizetype) (((long unsigned int) _37 + (long unsigned int) jj_80) * 4))
+../../matmul.c:81:25: note: 	outer base_address: C.8_44 + (sizetype) (((long unsigned int) _37 + (long unsigned int) jj_80) * 4)
+	outer offset from base address: 0
+	outer constant offset from base address: 0
+	outer step: 0
+	outer base alignment: 4
+
+	outer base misalignment: 0
+
+	outer offset alignment: 512
+
+	outer step alignment: 512
+../../matmul.c:81:25: note: got vectype for stmt: *_48 = _58;
+vector(8) float
+../../matmul.c:81:25: note: === vect_analyze_scalar_cycles ===
+../../matmul.c:81:25: note: Analyze phi: k_77 = PHI <k_43(25), kk_79(10)>
+../../matmul.c:81:25: note: Access function of PHI: {kk_79, +, 1}_5
+../../matmul.c:81:25: note: step: 1,  init: kk_79
+../../matmul.c:81:25: note: Detected induction.
+../../matmul.c:81:25: note: Analyze phi: .MEM_65 = PHI <.MEM_59(25), .MEM_63(10)>
+../../matmul.c:81:25: note: === vect_analyze_scalar_cycles ===
+../../matmul.c:81:25: note: Analyze phi: j_70 = PHI <j_60(26), jj_80(14)>
+../../matmul.c:81:25: note: Access function of PHI: {jj_80, +, 1}_6
+../../matmul.c:81:25: note: step: 1,  init: jj_80
+../../matmul.c:81:25: note: Detected induction.
+../../matmul.c:81:25: note: Analyze phi: .MEM_74 = PHI <.MEM_59(26), .MEM_65(14)>
+../../matmul.c:81:25: note: === vect_pattern_recog ===
+../../matmul.c:81:25: note: vect_is_simple_use: operand _39
+../../matmul.c:81:25: note: def_stmt: _39 = (long unsigned int) _38;
+../../matmul.c:81:25: note: type of def: internal
+../../matmul.c:81:25: note: vect_is_simple_use: operand _38
+../../matmul.c:81:25: note: def_stmt: _38 = _37 + k_77;
+../../matmul.c:81:25: note: type of def: internal
+../../matmul.c:81:25: note: vect_is_simple_use: operand 4
+../../matmul.c:81:25: note: vect_is_simple_use: operand k_77
+../../matmul.c:81:25: note: def_stmt: k_77 = PHI <k_43(25), kk_79(10)>
+../../matmul.c:81:25: note: type of def: induction
+../../matmul.c:81:25: note: vect_is_simple_use: operand _46
+../../matmul.c:81:25: note: def_stmt: _46 = (long unsigned int) _45;
+../../matmul.c:81:25: note: type of def: internal
+../../matmul.c:81:25: note: vect_is_simple_use: operand _45
+../../matmul.c:81:25: note: def_stmt: _45 = _37 + j_70;
+../../matmul.c:81:25: note: type of def: internal
+../../matmul.c:81:25: note: vect_is_simple_use: operand 4
+../../matmul.c:81:25: note: vect_is_simple_use: operand _53
+../../matmul.c:81:25: note: def_stmt: _53 = (long unsigned int) _52;
+../../matmul.c:81:25: note: type of def: internal
+../../matmul.c:81:25: note: vect_is_simple_use: operand _52
+../../matmul.c:81:25: note: def_stmt: _52 = _51 + j_70;
+../../matmul.c:81:25: note: type of def: internal
+../../matmul.c:81:25: note: vect_is_simple_use: operand 4
+../../matmul.c:81:25: note: vect_is_simple_use: operand aik_42
+../../matmul.c:81:25: note: def_stmt: aik_42 = *_41;
+../../matmul.c:81:25: note: type of def: internal
+../../matmul.c:81:25: note: === vect_analyze_data_ref_accesses ===
+../../matmul.c:81:25: note: zero step in outer loop.
+../../matmul.c:81:25: note: zero step in outer loop.
+../../matmul.c:81:25: note: not vectorized: complicated access pattern.
+../../matmul.c:81:25: note: bad data access.
+
+Analyzing loop at ../../matmul.c:83
+../../matmul.c:83:29: note: ===== analyze_loop_nest =====
+../../matmul.c:83:29: note: === vect_analyze_loop_form ===
+../../matmul.c:83:29: note: === get_loop_niters ===
+../../matmul.c:83:29: note: Symbolic number of iterations is ((unsigned int) _32 - (unsigned int) jj_80) + 32
+../../matmul.c:83:29: note: === vect_analyze_data_refs ===
+../../matmul.c:83:29: note: got vectype for stmt: _49 = *_48;
+vector(8) float
+../../matmul.c:83:29: note: got vectype for stmt: _56 = *_55;
+vector(8) float
+../../matmul.c:83:29: note: got vectype for stmt: *_48 = _58;
+vector(8) float
+../../matmul.c:83:29: note: === vect_analyze_scalar_cycles ===
+../../matmul.c:83:29: note: Analyze phi: j_70 = PHI <j_60(26), jj_80(14)>
+../../matmul.c:83:29: note: Access function of PHI: {jj_80, +, 1}_6
+../../matmul.c:83:29: note: step: 1,  init: jj_80
+../../matmul.c:83:29: note: Detected induction.
+../../matmul.c:83:29: note: Analyze phi: .MEM_74 = PHI <.MEM_59(26), .MEM_65(14)>
+../../matmul.c:83:29: note: === vect_pattern_recog ===
+../../matmul.c:83:29: note: vect_is_simple_use: operand _46
+../../matmul.c:83:29: note: def_stmt: _46 = (long unsigned int) _45;
+../../matmul.c:83:29: note: type of def: internal
+../../matmul.c:83:29: note: vect_is_simple_use: operand _45
+../../matmul.c:83:29: note: def_stmt: _45 = _37 + j_70;
+../../matmul.c:83:29: note: type of def: internal
+../../matmul.c:83:29: note: vect_is_simple_use: operand 4
+../../matmul.c:83:29: note: vect_is_simple_use: operand _53
+../../matmul.c:83:29: note: def_stmt: _53 = (long unsigned int) _52;
+../../matmul.c:83:29: note: type of def: internal
+../../matmul.c:83:29: note: vect_is_simple_use: operand _52
+../../matmul.c:83:29: note: def_stmt: _52 = _51 + j_70;
+../../matmul.c:83:29: note: type of def: internal
+../../matmul.c:83:29: note: vect_is_simple_use: operand 4
+../../matmul.c:83:29: note: vect_is_simple_use: operand aik_42
+../../matmul.c:83:29: note: def_stmt: aik_42 = *_41;
+../../matmul.c:83:29: note: type of def: external
+../../matmul.c:83:29: note: === vect_analyze_data_ref_accesses ===
+../../matmul.c:83:29: note: === vect_mark_stmts_to_be_vectorized ===
+../../matmul.c:83:29: note: init: phi relevant? j_70 = PHI <j_60(26), jj_80(14)>
+../../matmul.c:83:29: note: init: phi relevant? .MEM_74 = PHI <.MEM_59(26), .MEM_65(14)>
+../../matmul.c:83:29: note: init: stmt relevant? _45 = _37 + j_70;
+../../matmul.c:83:29: note: init: stmt relevant? _46 = (long unsigned int) _45;
+../../matmul.c:83:29: note: init: stmt relevant? _47 = _46 * 4;
+../../matmul.c:83:29: note: init: stmt relevant? _48 = C.8_44 + _47;
+../../matmul.c:83:29: note: init: stmt relevant? _49 = *_48;
+../../matmul.c:83:29: note: init: stmt relevant? _52 = _51 + j_70;
+../../matmul.c:83:29: note: init: stmt relevant? _53 = (long unsigned int) _52;
+../../matmul.c:83:29: note: init: stmt relevant? _54 = _53 * 4;
+../../matmul.c:83:29: note: init: stmt relevant? _55 = B.9_50 + _54;
+../../matmul.c:83:29: note: init: stmt relevant? _56 = *_55;
+../../matmul.c:83:29: note: init: stmt relevant? _57 = aik_42 * _56;
+../../matmul.c:83:29: note: init: stmt relevant? _58 = _49 + _57;
+../../matmul.c:83:29: note: init: stmt relevant? *_48 = _58;
+../../matmul.c:83:29: note: vec_stmt_relevant_p: stmt has vdefs.
+../../matmul.c:83:29: note: mark relevant 5, live 0: *_48 = _58;
+../../matmul.c:83:29: note: init: stmt relevant? j_60 = j_70 + 1;
+../../matmul.c:83:29: note: init: stmt relevant? if (j_max_33 > j_60)
+../../matmul.c:83:29: note: worklist: examine stmt: *_48 = _58;
+../../matmul.c:83:29: note: vect_is_simple_use: operand _58
+../../matmul.c:83:29: note: def_stmt: _58 = _49 + _57;
+../../matmul.c:83:29: note: type of def: internal
+../../matmul.c:83:29: note: mark relevant 5, live 0: _58 = _49 + _57;
+../../matmul.c:83:29: note: worklist: examine stmt: _58 = _49 + _57;
+../../matmul.c:83:29: note: vect_is_simple_use: operand _49
+../../matmul.c:83:29: note: def_stmt: _49 = *_48;
+../../matmul.c:83:29: note: type of def: internal
+../../matmul.c:83:29: note: mark relevant 5, live 0: _49 = *_48;
+../../matmul.c:83:29: note: vect_is_simple_use: operand _57
+../../matmul.c:83:29: note: def_stmt: _57 = aik_42 * _56;
+../../matmul.c:83:29: note: type of def: internal
+../../matmul.c:83:29: note: mark relevant 5, live 0: _57 = aik_42 * _56;
+../../matmul.c:83:29: note: worklist: examine stmt: _57 = aik_42 * _56;
+../../matmul.c:83:29: note: vect_is_simple_use: operand aik_42
+../../matmul.c:83:29: note: def_stmt: aik_42 = *_41;
+../../matmul.c:83:29: note: type of def: external
+../../matmul.c:83:29: note: def_stmt is out of loop.
+../../matmul.c:83:29: note: vect_is_simple_use: operand _56
+../../matmul.c:83:29: note: def_stmt: _56 = *_55;
+../../matmul.c:83:29: note: type of def: internal
+../../matmul.c:83:29: note: mark relevant 5, live 0: _56 = *_55;
+../../matmul.c:83:29: note: worklist: examine stmt: _56 = *_55;
+../../matmul.c:83:29: note: worklist: examine stmt: _49 = *_48;
+../../matmul.c:83:29: note: === vect_analyze_data_ref_dependences ===
+../../matmul.c:83:29: note: dependence distance  = 0.
+../../matmul.c:83:29: note: dependence distance == 0 between *_48 and *_48
+../../matmul.c:83:29: note: versioning for alias required: can't determine dependence between *_55 and *_48
+consider run-time aliasing test between *_55 and *_48
+../../matmul.c:83:29: note: === vect_determine_vectorization_factor ===
+../../matmul.c:83:29: note: ==> examining phi: j_70 = PHI <j_60(26), jj_80(14)>
+../../matmul.c:83:29: note: ==> examining phi: .MEM_74 = PHI <.MEM_59(26), .MEM_65(14)>
+../../matmul.c:83:29: note: ==> examining statement: _45 = _37 + j_70;
+../../matmul.c:83:29: note: skip.
+../../matmul.c:83:29: note: ==> examining statement: _46 = (long unsigned int) _45;
+../../matmul.c:83:29: note: skip.
+../../matmul.c:83:29: note: ==> examining statement: _47 = _46 * 4;
+../../matmul.c:83:29: note: skip.
+../../matmul.c:83:29: note: ==> examining statement: _48 = C.8_44 + _47;
+../../matmul.c:83:29: note: skip.
+../../matmul.c:83:29: note: ==> examining statement: _49 = *_48;
+../../matmul.c:83:29: note: get vectype for scalar type:  float
+../../matmul.c:83:29: note: vectype: vector(8) float
+../../matmul.c:83:29: note: nunits = 8
+../../matmul.c:83:29: note: ==> examining statement: _52 = _51 + j_70;
+../../matmul.c:83:29: note: skip.
+../../matmul.c:83:29: note: ==> examining statement: _53 = (long unsigned int) _52;
+../../matmul.c:83:29: note: skip.
+../../matmul.c:83:29: note: ==> examining statement: _54 = _53 * 4;
+../../matmul.c:83:29: note: skip.
+../../matmul.c:83:29: note: ==> examining statement: _55 = B.9_50 + _54;
+../../matmul.c:83:29: note: skip.
+../../matmul.c:83:29: note: ==> examining statement: _56 = *_55;
+../../matmul.c:83:29: note: get vectype for scalar type:  float
+../../matmul.c:83:29: note: vectype: vector(8) float
+../../matmul.c:83:29: note: nunits = 8
+../../matmul.c:83:29: note: ==> examining statement: _57 = aik_42 * _56;
+../../matmul.c:83:29: note: get vectype for scalar type:  float
+../../matmul.c:83:29: note: vectype: vector(8) float
+../../matmul.c:83:29: note: get vectype for scalar type:  float
+../../matmul.c:83:29: note: vectype: vector(8) float
+../../matmul.c:83:29: note: nunits = 8
+../../matmul.c:83:29: note: ==> examining statement: _58 = _49 + _57;
+../../matmul.c:83:29: note: get vectype for scalar type:  float
+../../matmul.c:83:29: note: vectype: vector(8) float
+../../matmul.c:83:29: note: get vectype for scalar type:  float
+../../matmul.c:83:29: note: vectype: vector(8) float
+../../matmul.c:83:29: note: nunits = 8
+../../matmul.c:83:29: note: ==> examining statement: *_48 = _58;
+../../matmul.c:83:29: note: get vectype for scalar type:  float
+../../matmul.c:83:29: note: vectype: vector(8) float
+../../matmul.c:83:29: note: nunits = 8
+../../matmul.c:83:29: note: ==> examining statement: j_60 = j_70 + 1;
+../../matmul.c:83:29: note: skip.
+../../matmul.c:83:29: note: ==> examining statement: if (j_max_33 > j_60)
+../../matmul.c:83:29: note: skip.
+../../matmul.c:83:29: note: vectorization factor = 8
+../../matmul.c:83:29: note: === vect_analyze_slp ===
+../../matmul.c:83:29: note: === vect_make_slp_decision ===
+../../matmul.c:83:29: note: === vect_analyze_data_refs_alignment ===
+../../matmul.c:83:29: note: accesses have the same alignment: *_48 and *_48
+../../matmul.c:83:29: note: recording new base alignment for C.8_44 + (sizetype) (((long unsigned int) _37 + (long unsigned int) jj_80) * 4)
+../../matmul.c:83:29: note:   alignment:    4
+../../matmul.c:83:29: note:   misalignment: 0
+../../matmul.c:83:29: note:   based on:     _49 = *_48;
+../../matmul.c:83:29: note: recording new base alignment for B.9_50 + (sizetype) (((long unsigned int) _51 + (long unsigned int) jj_80) * 4)
+../../matmul.c:83:29: note:   alignment:    4
+../../matmul.c:83:29: note:   misalignment: 0
+../../matmul.c:83:29: note:   based on:     _56 = *_55;
+../../matmul.c:83:29: note: vect_compute_data_ref_alignment:
+../../matmul.c:83:29: note: can't force alignment of ref: *_48
+../../matmul.c:83:29: note: vect_compute_data_ref_alignment:
+../../matmul.c:83:29: note: can't force alignment of ref: *_55
+../../matmul.c:83:29: note: vect_compute_data_ref_alignment:
+../../matmul.c:83:29: note: can't force alignment of ref: *_48
+../../matmul.c:83:29: note: === vect_prune_runtime_alias_test_list ===
+../../matmul.c:83:29: note: improved number of alias checks from 1 to 1
+../../matmul.c:83:29: note: === vect_enhance_data_refs_alignment ===
+../../matmul.c:83:29: note: Unknown misalignment, naturally aligned
+../../matmul.c:83:29: note: Unknown misalignment, naturally aligned
+../../matmul.c:83:29: note: Unknown misalignment, naturally aligned
+../../matmul.c:83:29: note: vect_can_advance_ivs_p:
+../../matmul.c:83:29: note: Analyze phi: j_70 = PHI <j_60(26), jj_80(14)>
+../../matmul.c:83:29: note: Analyze phi: .MEM_74 = PHI <.MEM_59(26), .MEM_65(14)>
+../../matmul.c:83:29: note: reduc or virtual phi. skip.
+../../matmul.c:83:29: note: vect_model_load_cost: aligned.
+../../matmul.c:83:29: note: vect_get_data_access_cost: inside_cost = 20, outside_cost = 0.
+../../matmul.c:83:29: note: Setting misalignment to unknown (-1).
+../../matmul.c:83:29: note: vect_model_load_cost: unaligned supported by hardware.
+../../matmul.c:83:29: note: vect_get_data_access_cost: inside_cost = 40, outside_cost = 0.
+../../matmul.c:83:29: note: vect_model_store_cost: aligned.
+../../matmul.c:83:29: note: vect_get_data_access_cost: inside_cost = 64, outside_cost = 0.
+../../matmul.c:83:29: note: vect_model_load_cost: aligned.
+../../matmul.c:83:29: note: vect_get_data_access_cost: inside_cost = 20, outside_cost = 0.
+../../matmul.c:83:29: note: Setting misalignment to unknown (-1).
+../../matmul.c:83:29: note: vect_model_load_cost: unaligned supported by hardware.
+../../matmul.c:83:29: note: vect_get_data_access_cost: inside_cost = 40, outside_cost = 0.
+../../matmul.c:83:29: note: vect_model_store_cost: aligned.
+../../matmul.c:83:29: note: vect_get_data_access_cost: inside_cost = 64, outside_cost = 0.
+../../matmul.c:83:29: note: cost model: epilogue peel iters set to vf/2 because loop iterations are unknown .
+../../matmul.c:83:29: note: vect_model_load_cost: unaligned supported by hardware.
+../../matmul.c:83:29: note: vect_get_data_access_cost: inside_cost = 20, outside_cost = 0.
+../../matmul.c:83:29: note: vect_model_load_cost: unaligned supported by hardware.
+../../matmul.c:83:29: note: vect_get_data_access_cost: inside_cost = 40, outside_cost = 0.
+../../matmul.c:83:29: note: vect_model_store_cost: unaligned supported by hardware.
+../../matmul.c:83:29: note: vect_get_data_access_cost: inside_cost = 56, outside_cost = 0.
+../../matmul.c:83:29: note: cost model: epilogue peel iters set to vf/2 because loop iterations are unknown .
+../../matmul.c:83:29: note: Vectorizing an unaligned access.
+../../matmul.c:83:29: note: Vectorizing an unaligned access.
+../../matmul.c:83:29: note: Vectorizing an unaligned access.
+../../matmul.c:83:29: note: === vect_analyze_loop_operations ===
+../../matmul.c:83:29: note: examining phi: j_70 = PHI <j_60(26), jj_80(14)>
+../../matmul.c:83:29: note: examining phi: .MEM_74 = PHI <.MEM_59(26), .MEM_65(14)>
+../../matmul.c:83:29: note: ==> examining statement: _45 = _37 + j_70;
+../../matmul.c:83:29: note: irrelevant.
+../../matmul.c:83:29: note: ==> examining statement: _46 = (long unsigned int) _45;
+../../matmul.c:83:29: note: irrelevant.
+../../matmul.c:83:29: note: ==> examining statement: _47 = _46 * 4;
+../../matmul.c:83:29: note: irrelevant.
+../../matmul.c:83:29: note: ==> examining statement: _48 = C.8_44 + _47;
+../../matmul.c:83:29: note: irrelevant.
+../../matmul.c:83:29: note: ==> examining statement: _49 = *_48;
+../../matmul.c:83:29: note: vect_is_simple_use: operand *_48
+../../matmul.c:83:29: note: not ssa-name.
+../../matmul.c:83:29: note: use not simple.
+../../matmul.c:83:29: note: vect_is_simple_use: operand *_48
+../../matmul.c:83:29: note: not ssa-name.
+../../matmul.c:83:29: note: use not simple.
+../../matmul.c:83:29: note: vect_model_load_cost: unaligned supported by hardware.
+../../matmul.c:83:29: note: vect_model_load_cost: inside_cost = 20, prologue_cost = 0 .
+../../matmul.c:83:29: note: ==> examining statement: _52 = _51 + j_70;
+../../matmul.c:83:29: note: irrelevant.
+../../matmul.c:83:29: note: ==> examining statement: _53 = (long unsigned int) _52;
+../../matmul.c:83:29: note: irrelevant.
+../../matmul.c:83:29: note: ==> examining statement: _54 = _53 * 4;
+../../matmul.c:83:29: note: irrelevant.
+../../matmul.c:83:29: note: ==> examining statement: _55 = B.9_50 + _54;
+../../matmul.c:83:29: note: irrelevant.
+../../matmul.c:83:29: note: ==> examining statement: _56 = *_55;
+../../matmul.c:83:29: note: vect_is_simple_use: operand *_55
+../../matmul.c:83:29: note: not ssa-name.
+../../matmul.c:83:29: note: use not simple.
+../../matmul.c:83:29: note: vect_is_simple_use: operand *_55
+../../matmul.c:83:29: note: not ssa-name.
+../../matmul.c:83:29: note: use not simple.
+../../matmul.c:83:29: note: vect_model_load_cost: unaligned supported by hardware.
+../../matmul.c:83:29: note: vect_model_load_cost: inside_cost = 20, prologue_cost = 0 .
+../../matmul.c:83:29: note: ==> examining statement: _57 = aik_42 * _56;
+../../matmul.c:83:29: note: vect_is_simple_use: operand aik_42
+../../matmul.c:83:29: note: def_stmt: aik_42 = *_41;
+../../matmul.c:83:29: note: type of def: external
+../../matmul.c:83:29: note: vect_is_simple_use: operand _56
+../../matmul.c:83:29: note: def_stmt: _56 = *_55;
+../../matmul.c:83:29: note: type of def: internal
+../../matmul.c:83:29: note: === vectorizable_operation ===
+../../matmul.c:83:29: note: vect_model_simple_cost: inside_cost = 16, prologue_cost = 4 .
+../../matmul.c:83:29: note: ==> examining statement: _58 = _49 + _57;
+../../matmul.c:83:29: note: vect_is_simple_use: operand _49
+../../matmul.c:83:29: note: def_stmt: _49 = *_48;
+../../matmul.c:83:29: note: type of def: internal
+../../matmul.c:83:29: note: vect_is_simple_use: operand _57
+../../matmul.c:83:29: note: def_stmt: _57 = aik_42 * _56;
+../../matmul.c:83:29: note: type of def: internal
+../../matmul.c:83:29: note: === vectorizable_operation ===
+../../matmul.c:83:29: note: vect_model_simple_cost: inside_cost = 16, prologue_cost = 0 .
+../../matmul.c:83:29: note: ==> examining statement: *_48 = _58;
+../../matmul.c:83:29: note: vect_is_simple_use: operand _58
+../../matmul.c:83:29: note: def_stmt: _58 = _49 + _57;
+../../matmul.c:83:29: note: type of def: internal
+../../matmul.c:83:29: note: vect_model_store_cost: unaligned supported by hardware.
+../../matmul.c:83:29: note: vect_model_store_cost: inside_cost = 16, prologue_cost = 0 .
+../../matmul.c:83:29: note: ==> examining statement: j_60 = j_70 + 1;
+../../matmul.c:83:29: note: irrelevant.
+../../matmul.c:83:29: note: ==> examining statement: if (j_max_33 > j_60)
+../../matmul.c:83:29: note: irrelevant.
+../../matmul.c:83:29: note: not using a fully-masked loop.
+cost model: Adding cost of checks for loop versioning aliasing.
+../../matmul.c:83:29: note: cost model: epilogue peel iters set to vf/2 because loop iterations are unknown .
+../../matmul.c:83:29: note: Cost model analysis: 
+  Vector inside of loop cost: 88
+  Vector prologue cost: 44
+  Vector epilogue cost: 240
+  Scalar iteration cost: 60
+  Scalar outside cost: 4
+  Vector outside cost: 284
+  prologue iterations: 0
+  epilogue iterations: 4
+  Calculated minimum iters for profitability: 5
+../../matmul.c:83:29: note:   Runtime profitability threshold = 8
+../../matmul.c:83:29: note:   Static estimate profitability threshold = 8
+../../matmul.c:83:29: note: epilog loop required
+../../matmul.c:83:29: note: vect_can_advance_ivs_p:
+../../matmul.c:83:29: note: Analyze phi: j_70 = PHI <j_60(26), jj_80(14)>
+../../matmul.c:83:29: note: Analyze phi: .MEM_74 = PHI <.MEM_59(26), .MEM_65(14)>
+../../matmul.c:83:29: note: reduc or virtual phi. skip.
+../../matmul.c:83:29: note: loop vectorized
+../../matmul.c:83:29: note: === vec_transform_loop ===
+../../matmul.c:83:29: note: Profitability threshold is 8 loop iterations.
+create runtime check for data references *_48 and *_55
+../../matmul.c:83:29: note: created 1 versioning for alias checks.
+../../matmul.c:83:29: note: loop versioned for vectorization because of possible aliasing
+../../matmul.c:83:29: note: vect_update_ivs_after_vectorizer: phi: j_70 = PHI <j_60(26), jj_80(40)>
+../../matmul.c:83:29: note: vect_update_ivs_after_vectorizer: phi: .MEM_74 = PHI <.MEM_59(26), .MEM_65(40)>
+../../matmul.c:83:29: note: reduc or virtual phi. skip.
+../../matmul.c:83:29: note: ------>vectorizing phi: j_70 = PHI <j_60(26), jj_80(49)>
+../../matmul.c:83:29: note: ------>vectorizing phi: .MEM_74 = PHI <.MEM_59(26), .MEM_65(49)>
+../../matmul.c:83:29: note: ------>vectorizing statement: _45 = _37 + j_70;
+../../matmul.c:83:29: note: ------>vectorizing statement: _46 = (long unsigned int) _45;
+../../matmul.c:83:29: note: ------>vectorizing statement: _47 = _46 * 4;
+../../matmul.c:83:29: note: ------>vectorizing statement: _48 = C.8_44 + _47;
+../../matmul.c:83:29: note: ------>vectorizing statement: _49 = *_48;
+../../matmul.c:83:29: note: transform statement.
+../../matmul.c:83:29: note: transform load. ncopies = 1
+../../matmul.c:83:29: note: create vector_type-pointer variable to type: vector(8) float  vectorizing a pointer ref: *C.8_44 + (sizetype) (((long unsigned int) _37 + (long unsigned int) jj_80) * 4)
+../../matmul.c:83:29: note: created vectp.28_144
+../../matmul.c:83:29: note: add new stmt: vect__49.29_151 = MEM[(float *)vectp.27_149];
+../../matmul.c:83:29: note: ------>vectorizing statement: _52 = _51 + j_70;
+../../matmul.c:83:29: note: ------>vectorizing statement: _53 = (long unsigned int) _52;
+../../matmul.c:83:29: note: ------>vectorizing statement: _54 = _53 * 4;
+../../matmul.c:83:29: note: ------>vectorizing statement: _55 = B.9_50 + _54;
+../../matmul.c:83:29: note: ------>vectorizing statement: _56 = *_55;
+../../matmul.c:83:29: note: transform statement.
+../../matmul.c:83:29: note: transform load. ncopies = 1
+../../matmul.c:83:29: note: create vector_type-pointer variable to type: vector(8) float  vectorizing a pointer ref: *B.9_50 + (sizetype) (((long unsigned int) _51 + (long unsigned int) jj_80) * 4)
+../../matmul.c:83:29: note: created vectp.31_152
+../../matmul.c:83:29: note: add new stmt: vect__56.32_159 = MEM[(float *)vectp.30_157];
+../../matmul.c:83:29: note: ------>vectorizing statement: _57 = aik_42 * _56;
+../../matmul.c:83:29: note: transform statement.
+../../matmul.c:83:29: note: vect_is_simple_use: operand aik_42
+../../matmul.c:83:29: note: def_stmt: aik_42 = *_41;
+../../matmul.c:83:29: note: type of def: external
+../../matmul.c:83:29: note: vect_is_simple_use: operand _56
+../../matmul.c:83:29: note: def_stmt: _56 = *_55;
+../../matmul.c:83:29: note: type of def: internal
+../../matmul.c:83:29: note: transform binary/unary operation.
+../../matmul.c:83:29: note: vect_get_vec_def_for_operand: aik_42
+../../matmul.c:83:29: note: vect_is_simple_use: operand aik_42
+../../matmul.c:83:29: note: def_stmt: aik_42 = *_41;
+../../matmul.c:83:29: note: type of def: external
+../../matmul.c:83:29: note:   def_stmt =  aik_42 = *_41;
+../../matmul.c:83:29: note: created new init_stmt: vect_cst__160 = {aik_42, aik_42, aik_42, aik_42, aik_42, aik_42, aik_42, aik_42};
+../../matmul.c:83:29: note: vect_get_vec_def_for_operand: _56
+../../matmul.c:83:29: note: vect_is_simple_use: operand _56
+../../matmul.c:83:29: note: def_stmt: _56 = *_55;
+../../matmul.c:83:29: note: type of def: internal
+../../matmul.c:83:29: note:   def_stmt =  _56 = *_55;
+../../matmul.c:83:29: note: add new stmt: vect__57.33_161 = vect_cst__160 * vect__56.32_159;
+../../matmul.c:83:29: note: ------>vectorizing statement: _58 = _49 + _57;
+../../matmul.c:83:29: note: transform statement.
+../../matmul.c:83:29: note: vect_is_simple_use: operand _49
+../../matmul.c:83:29: note: def_stmt: _49 = *_48;
+../../matmul.c:83:29: note: type of def: internal
+../../matmul.c:83:29: note: vect_is_simple_use: operand _57
+../../matmul.c:83:29: note: def_stmt: _57 = aik_42 * _56;
+../../matmul.c:83:29: note: type of def: internal
+../../matmul.c:83:29: note: transform binary/unary operation.
+../../matmul.c:83:29: note: vect_get_vec_def_for_operand: _49
+../../matmul.c:83:29: note: vect_is_simple_use: operand _49
+../../matmul.c:83:29: note: def_stmt: _49 = *_48;
+../../matmul.c:83:29: note: type of def: internal
+../../matmul.c:83:29: note:   def_stmt =  _49 = *_48;
+../../matmul.c:83:29: note: vect_get_vec_def_for_operand: _57
+../../matmul.c:83:29: note: vect_is_simple_use: operand _57
+../../matmul.c:83:29: note: def_stmt: _57 = aik_42 * _56;
+../../matmul.c:83:29: note: type of def: internal
+../../matmul.c:83:29: note:   def_stmt =  _57 = aik_42 * _56;
+../../matmul.c:83:29: note: add new stmt: vect__58.34_162 = vect__49.29_151 + vect__57.33_161;
+../../matmul.c:83:29: note: ------>vectorizing statement: *_48 = _58;
+../../matmul.c:83:29: note: transform statement.
+../../matmul.c:83:29: note: vect_is_simple_use: operand _58
+../../matmul.c:83:29: note: def_stmt: _58 = _49 + _57;
+../../matmul.c:83:29: note: type of def: internal
+../../matmul.c:83:29: note: transform store. ncopies = 1
+../../matmul.c:83:29: note: vect_get_vec_def_for_operand: _58
+../../matmul.c:83:29: note: vect_is_simple_use: operand _58
+../../matmul.c:83:29: note: def_stmt: _58 = _49 + _57;
+../../matmul.c:83:29: note: type of def: internal
+../../matmul.c:83:29: note:   def_stmt =  _58 = _49 + _57;
+../../matmul.c:83:29: note: create vector_type-pointer variable to type: vector(8) float  vectorizing a pointer ref: *C.8_44 + (sizetype) (((long unsigned int) _37 + (long unsigned int) jj_80) * 4)
+../../matmul.c:83:29: note: created vectp.36_163
+../../matmul.c:83:29: note: add new stmt: MEM[(float *)vectp.35_168] = vect__58.34_162;
+../../matmul.c:83:29: note: ------>vectorizing statement: j_60 = j_70 + 1;
+../../matmul.c:83:29: note: ------>vectorizing statement: vectp.27_150 = vectp.27_149 + 32;
+../../matmul.c:83:29: note: ------>vectorizing statement: vectp.30_158 = vectp.30_157 + 32;
+../../matmul.c:83:29: note: ------>vectorizing statement: vectp.35_169 = vectp.35_168 + 32;
+../../matmul.c:83:29: note: ------>vectorizing statement: if (j_max_33 > j_60)
+../../matmul.c:83:29: note: New loop exit condition: if (ivtmp_172 < bnd.24_139)
+../../matmul.c:83:29: note: LOOP VECTORIZED
+
+../../matmul.c:71:17: note: vectorized 1 loops in function.
+../../matmul.c:83:29: note: loop with 6 iterations completely unrolled (header execution count 36569637)
+../../matmul.c:71:17: note: ===vect_slp_analyze_bb===
+../../matmul.c:71:17: note: === vect_analyze_data_refs ===
+../../matmul.c:71:17: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:71:17: note: ===vect_slp_analyze_bb===
+../../matmul.c:71:17: note: === vect_analyze_data_refs ===
+../../matmul.c:71:17: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:71:17: note: ===vect_slp_analyze_bb===
+../../matmul.c:84:54: note: === vect_analyze_data_refs ===
+../../matmul.c:84:54: note: got vectype for stmt: A.7_36 = A;
+vector(4) long unsigned int
+../../matmul.c:84:54: note: got vectype for stmt: C.8_44 = C;
+vector(4) long unsigned int
+../../matmul.c:84:54: note: got vectype for stmt: B.9_50 = B;
+vector(4) long unsigned int
+../../matmul.c:84:54: note: === vect_analyze_data_ref_accesses ===
+../../matmul.c:84:54: note: not consecutive access A.7_36 = A;
+../../matmul.c:84:54: note: not consecutive access B.9_50 = B;
+../../matmul.c:84:54: note: not consecutive access C.8_44 = C;
+../../matmul.c:84:54: note: not vectorized: no grouped stores in basic block.
+../../matmul.c:84:54: note: ===vect_slp_analyze_bb===
+../../matmul.c:76:25: note: === vect_analyze_data_refs ===
+../../matmul.c:76:25: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:76:25: note: ===vect_slp_analyze_bb===
+../../matmul.c:76:25: note: ===vect_slp_analyze_bb===
+../../matmul.c:77:25: note: === vect_analyze_data_refs ===
+../../matmul.c:77:25: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:77:25: note: ===vect_slp_analyze_bb===
+../../matmul.c:77:25: note: ===vect_slp_analyze_bb===
+../../matmul.c:77:25: note: === vect_analyze_data_refs ===
+../../matmul.c:77:25: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:77:25: note: ===vect_slp_analyze_bb===
+../../matmul.c:77:25: note: ===vect_slp_analyze_bb===
+../../matmul.c:73:13: note: === vect_analyze_data_refs ===
+../../matmul.c:73:13: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:73:13: note: ===vect_slp_analyze_bb===
+../../matmul.c:73:13: note: ===vect_slp_analyze_bb===
+../../matmul.c:73:13: note: ===vect_slp_analyze_bb===
+../../matmul.c:78:25: note: === vect_analyze_data_refs ===
+../../matmul.c:78:25: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:78:25: note: ===vect_slp_analyze_bb===
+../../matmul.c:78:25: note: ===vect_slp_analyze_bb===
+../../matmul.c:82:44: note: === vect_analyze_data_refs ===
+../../matmul.c:82:44: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:82:44: note: ===vect_slp_analyze_bb===
+../../matmul.c:74:17: note: === vect_analyze_data_refs ===
+../../matmul.c:74:17: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:74:17: note: ===vect_slp_analyze_bb===
+../../matmul.c:80:21: note: === vect_analyze_data_refs ===
+../../matmul.c:80:21: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:80:21: note: ===vect_slp_analyze_bb===
+../../matmul.c:80:21: note: ===vect_slp_analyze_bb===
+../../matmul.c:84:56: note: === vect_analyze_data_refs ===
+../../matmul.c:84:56: note: got vectype for stmt: aik_42 = *_41;
+vector(8) float
+../../matmul.c:84:56: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:84:56: note: ===vect_slp_analyze_bb===
+../../matmul.c:84:56: note: ===vect_slp_analyze_bb===
+../../matmul.c:81:25: note: === vect_analyze_data_refs ===
+../../matmul.c:81:25: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:81:25: note: ===vect_slp_analyze_bb===
+../../matmul.c:81:25: note: ===vect_slp_analyze_bb===
+../../matmul.c:81:25: note: === vect_analyze_data_refs ===
+../../matmul.c:81:25: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:81:25: note: ===vect_slp_analyze_bb===
+../../matmul.c:84:44: note: === vect_analyze_data_refs ===
+../../matmul.c:84:44: note: not vectorized: no vectype for stmt: vect__49.29_151 = MEM[(float *)vectp.27_149];
+ scalar_type: vector(8) float
+../../matmul.c:84:44: note: not vectorized: no vectype for stmt: vect__56.32_159 = MEM[(float *)vectp.30_157];
+ scalar_type: vector(8) float
+../../matmul.c:84:44: note: not vectorized: no vectype for stmt: MEM[(float *)vectp.35_168] = vect__58.34_162;
+ scalar_type: vector(8) float
+../../matmul.c:84:44: note: === vect_analyze_data_ref_accesses ===
+../../matmul.c:84:44: note: not vectorized: no grouped stores in basic block.
+../../matmul.c:84:44: note: ===vect_slp_analyze_bb===
+../../matmul.c:84:44: note: ===vect_slp_analyze_bb===
+../../matmul.c:84:44: note: === vect_analyze_data_refs ===
+../../matmul.c:84:44: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:84:44: note: ===vect_slp_analyze_bb===
+../../matmul.c:83:29: note: === vect_analyze_data_refs ===
+../../matmul.c:83:29: note: got vectype for stmt: _49 = *_48;
+vector(8) float
+../../matmul.c:83:29: note: got vectype for stmt: _56 = *_55;
+vector(8) float
+../../matmul.c:83:29: note: got vectype for stmt: *_48 = _58;
+vector(8) float
+../../matmul.c:83:29: note: === vect_analyze_data_ref_accesses ===
+../../matmul.c:83:29: note: not consecutive access _56 = *_55;
+../../matmul.c:83:29: note: not consecutive access _49 = *_48;
+../../matmul.c:83:29: note: not consecutive access *_48 = _58;
+../../matmul.c:83:29: note: not vectorized: no grouped stores in basic block.
+../../matmul.c:83:29: note: ===vect_slp_analyze_bb===
+../../matmul.c:83:29: note: === vect_analyze_data_refs ===
+../../matmul.c:83:29: note: got vectype for stmt: _178 = *_177;
+vector(8) float
+../../matmul.c:83:29: note: got vectype for stmt: _183 = *_182;
+vector(8) float
+../../matmul.c:83:29: note: got vectype for stmt: *_177 = _185;
+vector(8) float
+../../matmul.c:83:29: note: === vect_analyze_data_ref_accesses ===
+../../matmul.c:83:29: note: not consecutive access _183 = *_182;
+../../matmul.c:83:29: note: not consecutive access _178 = *_177;
+../../matmul.c:83:29: note: not consecutive access *_177 = _185;
+../../matmul.c:83:29: note: not vectorized: no grouped stores in basic block.
+../../matmul.c:83:29: note: ===vect_slp_analyze_bb===
+../../matmul.c:83:29: note: === vect_analyze_data_refs ===
+../../matmul.c:83:29: note: got vectype for stmt: _194 = *_193;
+vector(8) float
+../../matmul.c:83:29: note: got vectype for stmt: _199 = *_198;
+vector(8) float
+../../matmul.c:83:29: note: got vectype for stmt: *_193 = _201;
+vector(8) float
+../../matmul.c:83:29: note: === vect_analyze_data_ref_accesses ===
+../../matmul.c:83:29: note: not consecutive access _199 = *_198;
+../../matmul.c:83:29: note: not consecutive access _194 = *_193;
+../../matmul.c:83:29: note: not consecutive access *_193 = _201;
+../../matmul.c:83:29: note: not vectorized: no grouped stores in basic block.
+../../matmul.c:83:29: note: ===vect_slp_analyze_bb===
+../../matmul.c:83:29: note: === vect_analyze_data_refs ===
+../../matmul.c:83:29: note: got vectype for stmt: _210 = *_209;
+vector(8) float
+../../matmul.c:83:29: note: got vectype for stmt: _215 = *_214;
+vector(8) float
+../../matmul.c:83:29: note: got vectype for stmt: *_209 = _217;
+vector(8) float
+../../matmul.c:83:29: note: === vect_analyze_data_ref_accesses ===
+../../matmul.c:83:29: note: not consecutive access _215 = *_214;
+../../matmul.c:83:29: note: not consecutive access _210 = *_209;
+../../matmul.c:83:29: note: not consecutive access *_209 = _217;
+../../matmul.c:83:29: note: not vectorized: no grouped stores in basic block.
+../../matmul.c:83:29: note: ===vect_slp_analyze_bb===
+../../matmul.c:83:29: note: === vect_analyze_data_refs ===
+../../matmul.c:83:29: note: got vectype for stmt: _226 = *_225;
+vector(8) float
+../../matmul.c:83:29: note: got vectype for stmt: _231 = *_230;
+vector(8) float
+../../matmul.c:83:29: note: got vectype for stmt: *_225 = _233;
+vector(8) float
+../../matmul.c:83:29: note: === vect_analyze_data_ref_accesses ===
+../../matmul.c:83:29: note: not consecutive access _231 = *_230;
+../../matmul.c:83:29: note: not consecutive access _226 = *_225;
+../../matmul.c:83:29: note: not consecutive access *_225 = _233;
+../../matmul.c:83:29: note: not vectorized: no grouped stores in basic block.
+../../matmul.c:83:29: note: ===vect_slp_analyze_bb===
+../../matmul.c:83:29: note: === vect_analyze_data_refs ===
+../../matmul.c:83:29: note: got vectype for stmt: _242 = *_241;
+vector(8) float
+../../matmul.c:83:29: note: got vectype for stmt: _247 = *_246;
+vector(8) float
+../../matmul.c:83:29: note: got vectype for stmt: *_241 = _249;
+vector(8) float
+../../matmul.c:83:29: note: === vect_analyze_data_ref_accesses ===
+../../matmul.c:83:29: note: not consecutive access _247 = *_246;
+../../matmul.c:83:29: note: not consecutive access _242 = *_241;
+../../matmul.c:83:29: note: not consecutive access *_241 = _249;
+../../matmul.c:83:29: note: not vectorized: no grouped stores in basic block.
+../../matmul.c:83:29: note: ===vect_slp_analyze_bb===
+../../matmul.c:83:58: note: === vect_analyze_data_refs ===
+../../matmul.c:83:58: note: got vectype for stmt: _5 = *_6;
+vector(8) float
+../../matmul.c:83:58: note: got vectype for stmt: _106 = *_109;
+vector(8) float
+../../matmul.c:83:58: note: got vectype for stmt: *_6 = _105;
+vector(8) float
+../../matmul.c:83:58: note: === vect_analyze_data_ref_accesses ===
+../../matmul.c:83:58: note: not consecutive access _106 = *_109;
+../../matmul.c:83:58: note: not consecutive access _5 = *_6;
+../../matmul.c:83:58: note: not consecutive access *_6 = _105;
+../../matmul.c:83:58: note: not vectorized: no grouped stores in basic block.
+../../matmul.c:83:58: note: ===vect_slp_analyze_bb===
+../../matmul.c:83:58: note: ===vect_slp_analyze_bb===
+../../matmul.c:83:29: note: === vect_analyze_data_refs ===
+../../matmul.c:83:29: note: got vectype for stmt: _88 = *_89;
+vector(8) float
+../../matmul.c:83:29: note: got vectype for stmt: _83 = *_84;
+vector(8) float
+../../matmul.c:83:29: note: got vectype for stmt: *_89 = _75;
+vector(8) float
+../../matmul.c:83:29: note: === vect_analyze_data_ref_accesses ===
+../../matmul.c:83:29: note: not consecutive access _83 = *_84;
+../../matmul.c:83:29: note: not consecutive access _88 = *_89;
+../../matmul.c:83:29: note: not consecutive access *_89 = _75;
+../../matmul.c:83:29: note: not vectorized: no grouped stores in basic block.
+../../matmul.c:83:29: note: ===vect_slp_analyze_bb===
+../../matmul.c:83:29: note: ===vect_slp_analyze_bb===
+../../matmul.c:83:29: note: === vect_analyze_data_refs ===
+../../matmul.c:83:29: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:83:29: note: ===vect_slp_analyze_bb===
+../../matmul.c:83:29: note: === vect_analyze_data_refs ===
+../../matmul.c:83:29: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:65:20: note: Loop nest 1 distributed: split to 0 loops and 1 library calls.
+../../matmul.c:62:17: note: vectorized 0 loops in function.
+../../matmul.c:62:17: note: ===vect_slp_analyze_bb===
+../../matmul.c:62:17: note: === vect_analyze_data_refs ===
+../../matmul.c:62:17: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:62:17: note: ===vect_slp_analyze_bb===
+../../matmul.c:62:17: note: === vect_analyze_data_refs ===
+../../matmul.c:62:17: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:62:17: note: ===vect_slp_analyze_bb===
+../../matmul.c:65:28: note: === vect_analyze_data_refs ===
+../../matmul.c:65:28: note: got vectype for stmt: C.6_17 = C;
+vector(4) long unsigned int
+../../matmul.c:65:28: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:65:28: note: ===vect_slp_analyze_bb===
+../../matmul.c:65:28: note: === vect_analyze_data_refs ===
+../../matmul.c:65:28: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:65:28: note: ===vect_slp_analyze_bb===
+../../matmul.c:65:28: note: === vect_analyze_data_refs ===
+../../matmul.c:65:28: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:65:28: note: ===vect_slp_analyze_bb===
+../../matmul.c:31:41: note: === vect_analyze_data_refs ===
+../../matmul.c:31:41: note: got vectype for stmt: _1 = fim.tv_sec;
+vector(4) long int
+../../matmul.c:31:41: note: got vectype for stmt: _2 = inicio.tv_sec;
+vector(4) long int
+../../matmul.c:31:41: note: got vectype for stmt: _5 = fim.tv_nsec;
+vector(4) long int
+../../matmul.c:31:41: note: got vectype for stmt: _6 = inicio.tv_nsec;
+vector(4) long int
+../../matmul.c:31:41: note: === vect_analyze_data_ref_accesses ===
+../../matmul.c:31:41: note: Detected interleaving load inicio.tv_sec and inicio.tv_nsec
+../../matmul.c:31:41: note: Detected interleaving load fim.tv_sec and fim.tv_nsec
+../../matmul.c:31:41: note: Detected interleaving load of size 2 starting with _2 = inicio.tv_sec;
+../../matmul.c:31:41: note: Detected interleaving load of size 2 starting with _1 = fim.tv_sec;
+../../matmul.c:31:41: note: not vectorized: no grouped stores in basic block.
+
+Analyzing loop at ../../matmul.c:59
+../../matmul.c:59:5: note: ===== analyze_loop_nest =====
+../../matmul.c:59:5: note: === vect_analyze_loop_form ===
+../../matmul.c:59:5: note: not vectorized: control flow in loop.
+../../matmul.c:59:5: note: bad loop form.
+
+Analyzing loop at ../../matmul.c:52
+../../matmul.c:52:5: note: ===== analyze_loop_nest =====
+../../matmul.c:52:5: note: === vect_analyze_loop_form ===
+../../matmul.c:52:5: note: === vect_analyze_loop_form ===
+../../matmul.c:52:5: note: === get_loop_niters ===
+../../matmul.c:52:5: note: Considering outer-loop vectorization.
+../../matmul.c:52:5: note: === get_loop_niters ===
+../../matmul.c:52:5: note: not vectorized: loop contains function calls or data references that cannot be analyzed
+
+Analyzing loop at ../../matmul.c:53
+../../matmul.c:53:9: note: ===== analyze_loop_nest =====
+../../matmul.c:53:9: note: === vect_analyze_loop_form ===
+../../matmul.c:53:9: note: === get_loop_niters ===
+../../matmul.c:53:9: note: not vectorized: loop contains function calls or data references that cannot be analyzed
+../../matmul.c:35:5: note: vectorized 0 loops in function.
+../../matmul.c:35:5: note: ===vect_slp_analyze_bb===
+../../matmul.c:43:19: note: === vect_analyze_data_refs ===
+../../matmul.c:43:19: note: got vectype for stmt: A = _1;
+vector(4) long unsigned int
+../../matmul.c:43:19: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:44:19: note: === vect_analyze_data_refs ===
+../../matmul.c:44:19: note: got vectype for stmt: B = _2;
+vector(4) long unsigned int
+../../matmul.c:44:19: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:46:18: note: === vect_analyze_data_refs ===
+../../matmul.c:46:18: note: got vectype for stmt: C = _3;
+vector(4) long unsigned int
+../../matmul.c:46:18: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:46:18: note: ===vect_slp_analyze_bb===
+../../matmul.c:47:9: note: === vect_analyze_data_refs ===
+../../matmul.c:47:9: note: got vectype for stmt: stderr.3_4 = stderr;
+vector(4) long unsigned int
+../../matmul.c:47:9: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:47:9: note: ===vect_slp_analyze_bb===
+../../matmul.c:47:9: note: ===vect_slp_analyze_bb===
+../../matmul.c:55:34: note: === vect_analyze_data_refs ===
+../../matmul.c:55:34: note: got vectype for stmt: A.4_7 = A;
+vector(4) long unsigned int
+../../matmul.c:55:34: note: got vectype for stmt: *_12 = _13;
+vector(8) float
+../../matmul.c:55:34: note: === vect_analyze_data_ref_accesses ===
+../../matmul.c:55:34: note: not consecutive access *_12 = _13;
+../../matmul.c:55:34: note: not consecutive access A.4_7 = A;
+../../matmul.c:55:34: note: not vectorized: no grouped stores in basic block.
+../../matmul.c:53:9: note: === vect_analyze_data_refs ===
+../../matmul.c:53:9: note: got vectype for stmt: B.5_16 = B;
+vector(4) long unsigned int
+../../matmul.c:53:9: note: got vectype for stmt: *_17 = _18;
+vector(8) float
+../../matmul.c:53:9: note: === vect_analyze_data_ref_accesses ===
+../../matmul.c:53:9: note: not consecutive access *_17 = _18;
+../../matmul.c:53:9: note: not consecutive access B.5_16 = B;
+../../matmul.c:53:9: note: not vectorized: no grouped stores in basic block.
+../../matmul.c:53:9: note: ===vect_slp_analyze_bb===
+../../matmul.c:52:5: note: === vect_analyze_data_refs ===
+../../matmul.c:52:5: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:52:5: note: ===vect_slp_analyze_bb===
+../../matmul.c:52:5: note: ===vect_slp_analyze_bb===
+../../matmul.c:52:5: note: ===vect_slp_analyze_bb===
+../../matmul.c:52:5: note: ===vect_slp_analyze_bb===
+../../matmul.c:54:16: note: === vect_analyze_data_refs ===
+../../matmul.c:54:16: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:54:16: note: ===vect_slp_analyze_bb===
+../../matmul.c:96:12: note: === vect_analyze_data_refs ===
+../../matmul.c:96:12: note: got vectype for stmt: inicio$tv_sec_33 = MEM[(struct timespec *)&inicio];
+vector(4) long int
+../../matmul.c:96:12: note: got vectype for stmt: inicio$tv_nsec_40 = MEM[(struct timespec *)&inicio + 8B];
+vector(4) long int
+../../matmul.c:96:12: note: got vectype for stmt: fim$tv_sec_48 = MEM[(struct timespec *)&fim];
+vector(4) long int
+../../matmul.c:96:12: note: got vectype for stmt: fim$tv_nsec_62 = MEM[(struct timespec *)&fim + 8B];
+vector(4) long int
+../../matmul.c:96:12: note: === vect_analyze_data_ref_accesses ===
+../../matmul.c:96:12: note: Detected interleaving load MEM[(struct timespec *)&inicio] and MEM[(struct timespec *)&inicio + 8B]
+../../matmul.c:96:12: note: Detected interleaving load MEM[(struct timespec *)&fim] and MEM[(struct timespec *)&fim + 8B]
+../../matmul.c:96:12: note: Detected interleaving load of size 2 starting with inicio$tv_sec_33 = MEM[(struct timespec *)&inicio];
+../../matmul.c:96:12: note: Detected interleaving load of size 2 starting with fim$tv_sec_48 = MEM[(struct timespec *)&fim];
+../../matmul.c:96:12: note: not vectorized: no grouped stores in basic block.
+../../matmul.c:96:12: note: ===vect_slp_analyze_bb===
+../../matmul.c:35:5: note: === vect_analyze_data_refs ===
+../../matmul.c:35:5: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:35:5: note: ===vect_slp_analyze_bb===
+../../matmul.c:59:5: note: === vect_analyze_data_refs ===
+../../matmul.c:59:5: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:59:5: note: ===vect_slp_analyze_bb===
+../../matmul.c:59:5: note: ===vect_slp_analyze_bb===
+../../matmul.c:106:5: note: === vect_analyze_data_refs ===
+../../matmul.c:106:5: note: got vectype for stmt: A.10_19 = A;
+vector(4) long unsigned int
+../../matmul.c:106:5: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:107:5: note: === vect_analyze_data_refs ===
+../../matmul.c:107:5: note: got vectype for stmt: B.11_20 = B;
+vector(4) long unsigned int
+../../matmul.c:107:5: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:108:5: note: === vect_analyze_data_refs ===
+../../matmul.c:108:5: note: got vectype for stmt: C.12_21 = C;
+vector(4) long unsigned int
+../../matmul.c:108:5: note: not vectorized: not enough data-refs in basic block.
+../../matmul.c:108:5: note: ===vect_slp_analyze_bb===
+../../matmul.c:108:5: note: === vect_analyze_data_refs ===
+../../matmul.c:108:5: note: not vectorized: not enough data-refs in basic block.
