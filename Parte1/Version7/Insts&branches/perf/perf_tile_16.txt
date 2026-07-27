@@ -1,0 +1,13 @@
+bin/matmul_tile_16: Killed
+bin/matmul_tile_16: Killed
+bin/matmul_tile_16: Killed
+bin/matmul_tile_16: Killed
+bin/matmul_tile_16: Killed
+bin/matmul_tile_16: Killed
+bin/matmul_tile_16: Killed
+bin/matmul_tile_16: Killed
+bin/matmul_tile_16: Killed
+bin/matmul_tile_16: Killed
+34838582122;;instructions;0,80%;5416849441;100,00;;
+9421282354;;branches;0,67%;5416849441;100,00;;
+17951859;;branch-misses;1,90%;5416849441;100,00;0;of all branches

@@ -1,0 +1,12 @@
+Executando TILE=4
+Executando TILE=8
+Executando TILE=16
+Executando TILE=32
+Executando TILE=64
+Executando TILE=128
+
+=============================================
+Relatório gerado:
+    perf_report.txt
+=============================================
+slurmstepd: error: Detected 60 oom_kill events in StepId=11556023.batch. Some of the step tasks have been OOM Killed.

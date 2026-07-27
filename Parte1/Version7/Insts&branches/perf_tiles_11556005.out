@@ -1,0 +1,5 @@
+Executando TILE=4
+Executando TILE=8
+Executando TILE=16
+slurmstepd: error: *** JOB 11556005 ON sdumont6048 CANCELLED AT 2026-07-27T12:28:50 ***
+slurmstepd: error: Detected 25 oom_kill events in StepId=11556005.batch. Some of the step tasks have been OOM Killed.
